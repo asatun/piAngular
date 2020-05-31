@@ -1,0 +1,40 @@
+<section id="inner-headline">
+  <div class="container">
+    <div class="row">
+      <div class="span4">
+        <div class="inner-heading">
+
+        </div>
+      </div>
+      <div class="span8">
+        <ul class="breadcrumb">
+          <li><a href="#"><i class="icon-home"></i></a><i class="icon-angle-right"></i></li>
+          <li><a href="#">Blog</a><i class="icon-angle-right"></i></li>
+          <li class="active">Blog with left sidebar</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="content">
+  <div class="container">
+    <div class="row">
+      <div class="span4">
+        <aside class="left-sidebar">
+          <div class="widget">
+            <form class="form-search">
+              <input placeholder="Type something" type="text" class="input-medium search-query">
+              <button type="submit" class="btn btn-square btn-theme">Search</button>
+            </form>
+          </div>
+
+
+          <app-left-side></app-left-side>
+        </aside>
+      </div>
+      <div class="span8">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</section>

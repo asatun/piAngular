@@ -1,0 +1,80 @@
+<div class="card">
+  <h5 class="card-header badge-info">{{titreForm}}</h5>
+  <div class="card-body">
+    <!--form-->
+    <form [formGroup]="offreEmploiForm" (ngSubmit)="valider()">
+      <div class="form-group">
+        <label for="titre_offre"
+          [ngClass]="{'text-danger':offreEmploiForm.get('titre_offre').errors && offreEmploiForm.get('titre_offre').touched }">Titre<span
+            *ngIf="offreEmploiForm.get('titre_offre').errors && offreEmploiForm.get('titre_offre').touched ">&nbsp;&nbsp;
+            Obligatoire!!</span></label>
+        <input type="text" class="form-control" id="titre_offre" placeholder="ajouter un titre"
+          formControlName="titre_offre">
+      </div>
+
+      <div class="form-group">
+        <label for="objet">Objet</label>
+        <input type="text" class="form-control" id="objet" placeholder="sera affiché pour les candidats"
+          formControlName="objet">
+      </div>
+      <div class="form-group">
+        <label for="des_offre">Description</label>
+        <textarea class="form-control" id="des_offre" rows="3" placeholder="Description de l'offre d'emploi"
+          formControlName="des_offre"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="date_fin">Date clôture</label>
+        <input type="date" class="form-control" id="date_fin" placeholder="fermeture de la candidature"
+          formControlName="date_fin" [min]="minDate">
+
+      </div>
+      <!--
+      <div class="form-group">
+        <label for="exigence">Autres Exigences</label>
+        <textarea class="form-control" id="exigence" rows="3"
+          placeholder="Ajouter des Exigences ou des Commentaires ...."></textarea>
+      </div>
+-->
+
+      <div class="form-group">
+        <label for="id_domaine">Domaine d'activité</label>
+        <select id="id_domaine" class="form-control" name="id_domaine" formControlName="id_domaine">
+          <option *ngFor="let domaine of listDomainefromServer" value="{{domaine.id}}"
+            [selected]="domaine.id == offreEmploiForm.get('id_domaine')">
+            {{domaine.nom_domaine}}</option>
+        </select>
+      </div>
+
+      {{offreEmploiForm['id_domaine']}}
+
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" placeholder="Email" formControlName="email">
+        </div>
+        <div class="form-group col-md-6">
+
+          <label for="image">Attacher un Fichier</label>
+          <span *ngIf="imageModif"> [Ancienne Image] : {{imageModif}}</span>
+          <input type="file" class="form-control-file" id="image" (change)="onFileSelect($event)">
+          <span formControlName="image_offre">{{offre}}</span>
+        </div>
+      </div>
+
+
+
+      <button type="submit" class="btn btn-primary" [disabled]="offreEmploiForm.status=='INVALID'">
+        Valider</button>
+    </form>
+    <div class="alert alert-success" role="alert" *ngIf="alert">
+      <strong> Mise à jour </strong> effectué avec Succés
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+
+
+</div>

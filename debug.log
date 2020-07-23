@@ -1,0 +1,3 @@
+[0630/152523.017:ERROR:process_reader_win.cc(151)] SuspendThread: Accès refusé. (0x5)
+[0630/152523.019:ERROR:exception_snapshot_win.cc(98)] thread ID 3376 not found in process
+[0630/152523.019:ERROR:scoped_process_suspend.cc(40)] NtResumeProcess: Tentative d’accès à un processus en cours d’arrêt. (0xc000010a)

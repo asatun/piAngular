@@ -1,4 +1,15 @@
+
+
+interface modelOffre {
+
+  id: number,
+  titre_offre: String,
+  id_domaine: String,
+  date_fin: Date,
+  valider: String,
+}
 import { Component, OnInit } from '@angular/core';
+import { OffreEmploiService } from 'src/app/recruteur/services/offreEmploiService';
 
 @Component({
   selector: 'app-posts',
@@ -7,9 +18,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostsComponent implements OnInit {
 
-  constructor() { }
+  private listOffrefromServer: modelOffre[];
+  constructor(private offreEmploiService: OffreEmploiService) { }
 
   ngOnInit() {
+    this.getListOffre();
   }
 
+
+  getListOffre() {
+
+    this.offreEmploiService.getListOffreEmploi().subscribe((data) => {
+      this.listOffrefromServer = data;
+
+    }, (err) => {
+      console.log("erreur from server")
+    });
+
+  }
 }

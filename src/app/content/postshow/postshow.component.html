@@ -1,51 +1,88 @@
-<article>
-  <div class="row">
-    <div class="span8">
-      <div class="post-image">
-        <div class="post-heading">
-          <h3><a href="#">Example single post title here</a></h3>
+<div *ngIf="OffreObject">
+  <article>
+    <div class="row">
+      <div class="span8">
+
+
+        <div class="row">
+          <div class="span8">
+            <h4 class="heading" style="font-weight: bold;">{{OffreObject['objet']}}<span></span></h4>
+            <div class="wrapper">
+              <img src="assets/img/offres/{{OffreObject['image_offre']}}" alt=""
+                style="width: 100%;height: 350px;border: 5px;" />
+
+            </div>
+          </div>
+          <div class="span8">
+
+
+            <!-- start: Accordion -->
+            <div class="accordion" id="accordion2">
+              <div class="accordion-group">
+                <div class="accordion-heading">
+                  <a class="accordion-toggle active" data-toggle="collapse" data-parent="#accordion2"
+                    href="#collapseOne">
+                    <i class="icon-minus"></i> Details de l'Offre</a>
+
+                </div>
+                <div id="collapseOne" class="accordion-body collapse in">
+                  <div class="accordion-inner">
+                    <div>
+                      <i class="icon-calendar"></i> Date Postule : {{OffreObject["date_postule"] | date : "dd/MM/yyyy"}}
+                      -------- Date fin : {{OffreObject["date_fin"] | date : "dd/MM/yyyy"}}
+
+
+
+                    </div>
+                    {{OffreObject['des_offre']}}
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-group">
+                <div class="accordion-heading">
+                  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+                    <i class="icon-plus"></i> Postuler Votre Candidature</a>
+                </div>
+                <div id="collapseTwo" class="accordion-body collapse">
+                  <div class="accordion-inner">
+                    <div class="testimonial">
+                      <p class="text">
+                        <i class="icon-quote-left icon-48"></i> vous pouvez envoyer votre candidature a l'adresse mail
+                        de
+                        créateur de poste affiché ci-dessous <br>
+                        suivez votre candidature en en s'incrivant au post
+
+                      </p>
+                      <div class="author">
+                        <img src="img/dummies/testimonial-author1.png" class="img-circle bordered" alt="" />
+                        <p class="name">
+                          Contactez nous :
+                        </p>
+                        <span class="info">{{OffreObject['titre_offre']}} <a
+                            href="#">@email:{{OffreObject['email']}}</a></span>
+
+                        <p>
+                          <button class="btn btn-theme margintop10" type="submit">
+
+                            votre offre m'intéresse</button>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
         </div>
-        <img src="assets/img/dummies/blog/img1.jpg" alt="" />
-      </div>
-      <p>
-        Qui ut ceteros comprehensam. Cu eos sale sanctus eligendi, id ius elitr saperet, ocurreret pertinacia pri an. No
-        mei nibh consectetuer, semper laoreet perfecto ad qui, est rebum nulla argumentum ei. Fierent adipisci iracundia
-        est ei, usu timeam persius
-        ea. Usu ea justo malis, pri quando everti electram ei, ex homero omittam salutatus sed. Dicam appetere ne qui,
-        no has scripta appellantur. Mazim alienum appellantur eu cum, cu ullum officiis pro, pri at eius erat accusamus.
-        Eos id
-        hinc fierent indoctum, ad accusam consetetur voluptatibus sit. His at quod impedit. Eu zril quando perfecto mel,
-        sed eu eros debet.
-      </p>
-      <blockquote>
-        <i class="icon-quote-left"></i> Lorem ipsum dolor sit amet, ei quod constituto qui. Summo labores expetendis ad
-        quo, lorem luptatum et vis. No qui vidisse signiferumque...
-      </blockquote>
-      <p>
-        Fierent adipisci iracundia est ei, usu timeam persius ea. Usu ea justo malis, pri quando everti electram ei, ex
-        homero omittam salutatus sed. Dicam appetere ne qui, no has scripta appellantur. Mazim alienum appellantur eu
-        cum, cu ullum officiis pro, pri
-        at eius erat accusamus.
-      </p>
-      <div class="bottom-article">
-        <ul class="meta-post">
-          <li><i class="icon-user"></i><a href="#"> Admin</a></li>
-          <li><i class="icon-folder-open"></i><a href="#"> Blog</a></li>
-          <li><i class="icon-tags"></i><a href="#">Web design</a></li>
-        </ul>
+
+
+
       </div>
     </div>
-  </div>
-</article>
-<!-- author info -->
-<div class="about-author">
-  <a href="#" class="thumbnail align-left"><img src="assets/img/avatar.png" alt="" /></a>
-  <h5><strong><a href="#">John doe</a></strong></h5>
-  <p>
-    Qui ut ceteros comprehensam. Cu eos sale sanctus eligendi, id ius elitr saperet, ocurreret pertinacia pri an. No mei
-    nibh consectetuer, semper ad qui, est rebum nulla argumentum ei.
-  </p>
+  </article>
 </div>
+<!-- 
 <div class="comment-area">
   <h4>4 Comments</h4>
   <div class="media">
@@ -120,10 +157,9 @@
         <p>
           <textarea rows="12" class="input-block-level" placeholder="*Your comment here"></textarea>
         </p>
-        <p>
-          <button class="btn btn-theme margintop10" type="submit">Submit comment</button>
-        </p>
+        
       </div>
     </div>
   </form>
 </div>
+ -->

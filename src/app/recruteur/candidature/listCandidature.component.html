@@ -1,0 +1,86 @@
+<div class="card">
+
+  <h5 class="card-header badge-info">Liste des Candidatures</h5>
+
+  <div class="card">
+    <div class="card-body">
+      <label class="badge-info ml-2">Recherche des CVs</label>
+
+
+      <!--recherche-->
+      <div id="accordion">
+        <div class="card">
+
+
+          <div class="form-row">
+            <div class="form-group col-md-2">
+              <label for="refOffre">Nom & Prenom :</label>
+              <input type="text" class="form-control" id="nomEtPrenom" [(ngModel)]="nomEtPrenom">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="domaine">Domaine d'activité</label>
+              <select id="domaine" class="form-control" [(ngModel)]="idDomaine">
+                <option selected value="">choisir...</option>
+                <option *ngFor="let domaine of listDomainefromServer" value="{{domaine.id}}">
+                  {{domaine.nom_domaine}}</option>
+              </select>
+            </div>
+            <div class="form-group col-md-4">
+
+              <button (click)="chercher()" type="submit" class="btn btn-info mt-4 mr-2 float-right"><i
+                  class=" icon-search"></i><span class="fa fa-search"></span>
+                Chercher
+              </button>
+            </div>
+          </div>
+
+
+        </div>
+
+      </div>
+      <!--end recherche-->
+
+    </div>
+
+  </div>
+  <div class="card">
+    <div class="card-body ">
+
+      <div class="container">
+
+        <!--tab-->
+        <img *ngIf="!listCandidaturefromServer" src="../../../assets/img/loading.gif" class="rounded-circle"
+          alt="Cinque Terre" width="50" height="50" style="margin-left: 300px;">
+        <table class="table table-striped table-bordered table-hover">
+          <!--*ngIf="listCandidaturefromServer"-->
+          <thead>
+            <tr>
+              <th scope="col">N° CV</th>
+              <th scope="col">Nom & Prénom</th>
+              <th scope="col">Domaine d'activité</th>
+
+            </tr>
+          </thead>
+          <tbody>
+
+            <tr
+              *ngFor="let cv of listCandidaturefromServer  | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize; index as i">
+              <td scope="row"><a (click)="consulterCv(cv.id)" style="cursor: pointer;">{{ cv.id }}</a></td>
+              <td>{{ cv.titre }}</td>
+              <td> {{cv.nom_domaine }} </td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+
+        <ngb-pagination *ngIf="listCandidaturefromServer" class=" pagination" [collectionSize]="collectionSize"
+          [(page)]="page" [pageSize]="pageSize" [maxSize]="2">
+        </ngb-pagination>
+      </div>
+
+    </div>
+
+  </div>
+</div>
